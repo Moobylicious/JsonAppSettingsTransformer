@@ -1,0 +1,65 @@
+{
+    "Logging": {
+        "LogLevel": {
+            "Default": "Trace",
+            "System": "Trace",
+            "Microsoft": "Trace"
+        }
+    },
+    "certFile": "eurocoin.gbgservice.pfx",
+    "certPassword": "0ab83598",
+    "ServiceVersion": "2.1",
+    "AllowedHosts": "*",
+    "CommandTimeout": "120",
+    "XXConnectionString": "Data Source=.\\SQL2016, 1433;Database=GBGServiceTMP;user=gbgservice;password=gbgservice; MultipleActiveResultSets=true;Connection Timeout=120",
+    "XXDbConnectionType": "MsSqlServer",
+    "ConnectionString": "database=127.0.0.1:E:\\Databases\\Firebird\\GBGService\\GBGDATA.FDB;user=GKSERVER;password=iynidynci; Dialect=3; Charset=NONE; Port=3055",
+    "DbConnectionType": "Firebird",
+
+    "FbConnectionString": "database=127.0.0.1:E:\\Databases\\Firebird\\GBGService\\GBGDATA.FDB;user=GKSERVER;password=iynidynci; Dialect=3; Charset=NONE; Port=3055",
+    "SqlServerConnectionString": "Data Source=.\\SQL2016;Database=GBGWebService;user=gbgservice;password=gbgservice; MultipleActiveResultSets=true;Connection Timeout=120",
+    "DbConnectionTypeFb": "Firebird",
+    "DbConnectionTypeMsSql": "MsSqlServer",
+
+    "OrigBaseEndpoint": "https://eurocoin.gbgwebservice",
+    "Origport": "4434",
+    "BaseEndpoint": "https://localhost",
+    "port": "44392",
+    "MachineData": {
+        "ServiceEndpoint": "MachineDataCapture",
+        "HeartbeatPeriodSecs": "20",
+        "OfflinePeriodSecs": "300",
+        "MaxCodeLength": "4"
+    },
+    "Tito": {
+        "ServiceEndpoint": "GBGTitoService",
+        "HeartbeatPeriodSecs": "20",
+        "OfflinePeriodSecs": "300",
+        "ConfigV13": "1,1,0",
+        "SiteCode": "001",
+        "SiteName": "Playsafe Systems Demo",
+        "SiteAddress": "Playsafe Systems Head Office",
+        "SiteTown": "Bath",
+        "TicketExpiryInDays": "30",
+        "DateTimeFormat": "dd/MM/yyyy hh:mm:ss",
+        "DateFormat": "dd/MM/yyyy",
+        "TimeFormat": "hh:mm:ss",
+        "MaxTicketPrintValue": "150000",
+        "MaxTicketRedeemValue": "150000"
+
+    },
+    "Promo": {
+        "ServiceEndpoint": "promo",
+        "HeartbeatPeriodSecs": "20",
+        "OfflinePeriodSecs": "300"
+    },
+
+    "JwtIssuer": "Eurocoin.GBGWebService.Issuer",
+    "JwtAudience": "Eurocoin.GBGWebService.Audience",
+    "JwtSecret": "ThisIsASecretDontTellAnyone!!!$",
+    "JwtLifetime": "30",
+    "EnableJwt": "true",
+    "ValidateSerialNumber": "false",
+    "InitialRegistrationCanAddMachine": "true",
+    "MachineTypeForInitialRegistrationCreatedMachines": "1"
+}
