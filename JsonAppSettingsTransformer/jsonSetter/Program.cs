@@ -116,9 +116,7 @@ namespace jsonSetter
                         okToSave = true;
                     }
                     else if (prop == null && isAdd)
-                    {
-                      
-
+                    {                      
                         if (parentProp == null)
                         {
                             Log("Cannot find parent property.");
@@ -129,7 +127,7 @@ namespace jsonSetter
                         Log($"Added Property {thisPropertyLowLevelName} with value {newValue.Value}");
                         okToSave = true;
                     }
-                    else if (prop != null && !isAdd)
+                    else if (prop != null)// && !isAdd) //Surely just replace it if it IS there even if we said ADD it?
                     {
                         Log($"Trying to replace current property value with {newValue.Value}");
                         prop.Replace(newValue.Value);
