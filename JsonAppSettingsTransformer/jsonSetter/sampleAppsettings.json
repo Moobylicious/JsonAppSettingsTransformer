@@ -6,6 +6,19 @@
             "Microsoft": "Trace"
         }
     },
+    "ports": [
+        {
+            "port": 4448,
+            "http": "false",
+            "url": "GILESWIN10",
+            "CertFile": "E:\\SSL Stuff\\PlaysafeManagement\\GILESWIN10_PSMS.pfx",
+            "CertPassword": "PlayGBGSafe!cert"
+        },
+        {
+            "port": 6801,
+            "http": "true"
+        }
+    ],
     "certFile": "eurocoin.gbgservice.pfx",
     "certPassword": "0ab83598",
     "ServiceVersion": "2.1",

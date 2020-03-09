@@ -81,23 +81,61 @@ namespace jsonSetter
 
                     bool okToSave = false;
 
+                    //bool 
+
                     JObject parentProp = settings;
                     string thisPropertyLowLevelName = settingName;
-                    if (prop != null)
+//                    if (prop != null)
                     {
                         Log($"trying to find parent property of {settingName.Value}");
                         var proptree = settingName.Value.Split(new[] { '.' });
+
                         thisPropertyLowLevelName = proptree.Last();
+
+                        parentProp = settings;
+
                         if (proptree.Length > 1)
                         {
                             var parentPath = string.Join(".", proptree.Take(proptree.Length - 1));
-                            Log($"trying to find property {parentPath}");
+
                             parentProp = (settings.SelectToken(parentPath) as JObject);
-                        }
-                        else
-                        {
-                            parentProp = settings;
-                        }
+
+                            //If we could not find the parent prop, perhaps the ACTUAL property is an
+                            //array/index property and it doesn't have an entry at that index?                            
+
+                            if (parentProp == null && parentPath.Contains("[")){
+                                var requestedItemIndexBit = parentPath.Substring(parentPath.IndexOf('['));
+
+                                //See if the list property itself exists - strip off the index.
+                                parentPath = parentPath.Substring(0, parentPath.IndexOf('['));
+                                
+                                var parentArrayProp = (settings.SelectToken(parentPath) as JArray);
+
+                                //OK, if the array property exists, let's try to add objects to it until
+                                //it has one at the requested index.s
+                                if (parentArrayProp != null)
+                                {
+                                    //Get required index.
+                                    if (requestedItemIndexBit.Length >= 3)
+                                    {
+                                        if (int.TryParse(requestedItemIndexBit.Substring(
+                                            1,requestedItemIndexBit.Length-2),out var requestedIndex))
+                                        {
+                                            if (requestedIndex > 0)
+                                            {
+                                                while ((parentArrayProp.Count - 1) < requestedIndex)
+                                                {
+                                                    //add empty objects, we know not what their contents should be...
+                                                    parentArrayProp.Add(new JObject());
+                                                }
+                                                parentProp = (parentArrayProp[requestedIndex] as JObject);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            Log($"trying to find property {parentPath}");
+                        }                  
                     }
 
                     if (prop != null && isDelete)
