@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.168
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jsonSetter", "jsonSetter\jsonSetter.csproj", "{11A6F353-7071-47AC-BBA0-BE5EF9ABFEFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PwdHelper", "..\PwdHelper\PwdHelper.csproj", "{C1C050B9-2905-47B1-86F3-4607934DD47D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{11A6F353-7071-47AC-BBA0-BE5EF9ABFEFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11A6F353-7071-47AC-BBA0-BE5EF9ABFEFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11A6F353-7071-47AC-BBA0-BE5EF9ABFEFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1C050B9-2905-47B1-86F3-4607934DD47D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1C050B9-2905-47B1-86F3-4607934DD47D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1C050B9-2905-47B1-86F3-4607934DD47D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1C050B9-2905-47B1-86F3-4607934DD47D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
