@@ -1,0 +1,25 @@
+[
+  {
+    "userName": "admin",
+    "password": "password",
+    "roles": [
+      "Administrators",
+      "Users"
+    ]
+  },
+    {
+        "userName": "user",
+        "password": "password",
+        "roles": [
+            "Users"
+        ]
+    },
+    {
+        "userName": "sysdba",
+        "password": "",
+        "roles": [
+            "Administrators",
+            "Users"
+        ]
+    }
+]

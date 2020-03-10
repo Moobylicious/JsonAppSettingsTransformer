@@ -65,7 +65,18 @@ namespace jsonSetter
                     Log($"Loading {jsonFileName}");
                     var fileContents = File.ReadAllText(jsonFileName);
                     Log("Deserialising file");
-                    JObject settings = JsonConvert.DeserializeObject<JObject>(fileContents);
+                    bool rootIsObject = false;
+                    JContainer settings;
+                    try
+                    {
+                        settings = JsonConvert.DeserializeObject<JObject>(fileContents);
+                        rootIsObject = true;
+                    }
+                    catch (InvalidCastException e)
+                    {
+                        //ok, try to load it as a JArray instead, the root may be an array object?
+                        settings = JsonConvert.DeserializeObject<JArray>(fileContents);
+                    }
 
                     //try to find the wanted setting.
                     var prop = settings.SelectToken(settingName);
@@ -83,7 +94,7 @@ namespace jsonSetter
 
                     //bool 
 
-                    JObject parentProp = settings;
+                    JContainer parentProp = settings;
                     string thisPropertyLowLevelName = settingName;
 //                    if (prop != null)
                     {
@@ -144,7 +155,9 @@ namespace jsonSetter
 
                         //prop is a JToken, not a JProperty, so we need to get the propery
                         //by getting its parent and getting the Property directly.
-                        var thisProperty = parentProp.Property(thisPropertyLowLevelName);
+                                                
+                        var thisProperty = ((JObject)parentProp).Property(thisPropertyLowLevelName);
+
                         if (thisProperty == null)
                         {
                             Log("Could not find property to remove!");
@@ -161,7 +174,8 @@ namespace jsonSetter
                             return (int)ReturnValues.PropertyNotFound;
                         }
 
-                        parentProp.Add(thisPropertyLowLevelName, newValue.Value);
+                        (parentProp as JObject)?.Add(thisPropertyLowLevelName, newValue.Value);
+
                         Log($"Added Property {thisPropertyLowLevelName} with value {newValue.Value}");
                         okToSave = true;
                     }
